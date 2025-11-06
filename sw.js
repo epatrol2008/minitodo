@@ -1,11 +1,12 @@
-const CACHE_NAME = 'todo-v1.2';
+const CACHE_NAME = 'todo-v1.3';
 const urlsToCache = [
   './',
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  './icons/icon-192.png',
+  './icons/icon-512.png'
 ];
 
-// Установка
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -13,7 +14,6 @@ self.addEventListener('install', event => {
   );
 });
 
-// Активация - очистка старых кешей
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -28,12 +28,10 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch - стратегия: Cache First
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Возвращаем кеш если есть, иначе запрашиваем сеть
         return response || fetch(event.request);
       })
   );
