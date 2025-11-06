@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Todo v004</title>
-    <base href="./">
+    <title>Minimal Todo</title>
     <meta name="theme-color" content="#667eea">
-    <meta name="description" content="Минималистичный менеджер задач с флагами и приоритетами"> 
+    <meta name="description" content="Минималистичный менеджер задач с флагами и приоритетами">
     <link rel="manifest" href="./manifest.json">
     <link rel="icon" href="./icons/icon-192.png">
+    <base href="./">
     <style>
         * {
             margin: 0;
@@ -190,7 +190,6 @@
         }
 
         .clear-filters {
-            margin-left: auto;
             padding: 8px 16px;
             background: #6c757d;
             color: white;
@@ -198,6 +197,26 @@
             border-radius: 20px;
             cursor: pointer;
             font-size: 14px;
+        }
+
+        .check-updates-btn {
+            padding: 8px 16px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .check-updates-btn:hover {
+            background: #218838;
+        }
+
+        .check-updates-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
         }
 
         /* Список задач */
@@ -403,6 +422,49 @@
         .priority-dot.medium { background: #ffc107; }
         .priority-dot.high { background: #dc3545; }
 
+        /* PWA установка */
+        .install-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+
+        .install-btn.show {
+            display: block;
+        }
+
+        /* Уведомления о статусе */
+        .status-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+
+        .status-message.show {
+            display: block;
+        }
+
+        .status-message.error {
+            background: #dc3545;
+        }
+
         /* Адаптивность */
         @media (max-width: 768px) {
             .container {
@@ -439,8 +501,7 @@
                 width: 100%;
             }
 
-            .clear-filters {
-                margin-left: 0;
+            .clear-filters, .check-updates-btn {
                 width: 100%;
             }
 
@@ -460,6 +521,13 @@
 
             .priority-stats {
                 justify-content: center;
+            }
+
+            .install-btn {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                text-align: center;
             }
         }
 
@@ -482,34 +550,15 @@
                 gap: 8px;
             }
         }
-
-        /* PWA установка */
-        .install-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            display: none;
-        }
-
-        .install-btn.show {
-            display: block;
-        }
     </style>
 </head>
 <body>
+    <div class="status-message" id="statusMessage"></div>
     <button class="install-btn" id="installBtn">Установить приложение</button>
 
     <div class="container">
         <div class="header">
-            <h1>Minimal Todo</h1>
+            <h1>5 Minimal Todo</h1>
             <p>Простота и эффективность</p>
         </div>
 
@@ -533,6 +582,7 @@
                     <!-- Фильтры по приоритетам -->
                 </div>
                 <button class="clear-filters" id="clearFilters">Очистить фильтры</button>
+                <button class="check-updates-btn" id="checkUpdatesBtn">Проверить обновления</button>
             </div>
 
             <div class="task-list" id="taskList">
@@ -586,6 +636,8 @@
             init() {
                 this.bindEvents();
                 this.setupPWA();
+                this.requestNotificationPermission();
+                this.registerServiceWorker();
                 this.render();
             }
 
@@ -601,6 +653,10 @@
 
                 document.getElementById('installBtn').addEventListener('click', () => {
                     this.installPWA();
+                });
+
+                document.getElementById('checkUpdatesBtn').addEventListener('click', () => {
+                    this.manualCheck();
                 });
 
                 document.addEventListener('click', (e) => {
@@ -637,6 +693,38 @@
                 });
             }
 
+            async registerServiceWorker() {
+                if ('serviceWorker' in navigator) {
+                    try {
+                        const registration = await navigator.serviceWorker.register('./sw.js');
+                        console.log('Service Worker зарегистрирован', registration);
+                        
+                        // Слушаем сообщения от Service Worker
+                        navigator.serviceWorker.addEventListener('message', (event) => {
+                            if (event.data && event.data.type === 'checkResult') {
+                                this.showStatus(event.data.message, event.data.success ? 'success' : 'error');
+                            }
+                        });
+                    } catch (error) {
+                        console.error('Ошибка регистрации Service Worker:', error);
+                    }
+                }
+            }
+
+            async requestNotificationPermission() {
+                if ('Notification' in window && Notification.permission === 'default') {
+                    try {
+                        const permission = await Notification.requestPermission();
+                        if (permission === 'granted') {
+                            console.log('Разрешение на уведомления получено');
+                            this.showStatus('Уведомления включены! Вы будете получать уведомления о новых задачах.', 'success');
+                        }
+                    } catch (error) {
+                        console.error('Ошибка при запросе разрешения:', error);
+                    }
+                }
+            }
+
             showInstallButton() {
                 const installBtn = document.getElementById('installBtn');
                 installBtn.classList.add('show');
@@ -660,6 +748,16 @@
                 }
             }
 
+            showStatus(message, type = 'success') {
+                const statusEl = document.getElementById('statusMessage');
+                statusEl.textContent = message;
+                statusEl.className = `status-message show ${type}`;
+                
+                setTimeout(() => {
+                    statusEl.classList.remove('show');
+                }, 3000);
+            }
+
             addTask() {
                 const taskInput = document.getElementById('taskInput');
                 const flagsInput = document.getElementById('flagsInput');
@@ -681,6 +779,7 @@
                     taskInput.value = '';
                     flagsInput.value = '';
                     taskInput.focus();
+                    this.showStatus('Задача добавлена!', 'success');
                 }
             }
 
@@ -690,13 +789,18 @@
                     task.completed = !task.completed;
                     this.save();
                     this.render();
+                    this.showStatus(`Задача ${task.completed ? 'выполнена' : 'активна'}`, 'success');
                 }
             }
 
             deleteTask(id) {
+                const task = this.tasks.find(t => t.id === id);
                 this.tasks = this.tasks.filter(t => t.id !== id);
                 this.save();
                 this.render();
+                if (task) {
+                    this.showStatus('Задача удалена', 'success');
+                }
             }
 
             toggleFlagFilter(flag) {
@@ -721,6 +825,31 @@
                 this.activeFlagFilters.clear();
                 this.activePriorityFilters.clear();
                 this.render();
+                this.showStatus('Фильтры очищены', 'success');
+            }
+
+            async manualCheck() {
+                const checkBtn = document.getElementById('checkUpdatesBtn');
+                checkBtn.disabled = true;
+                checkBtn.textContent = 'Проверяем...';
+
+                try {
+                    if ('serviceWorker' in navigator) {
+                        const registration = await navigator.serviceWorker.ready;
+                        // Отправляем сообщение Service Worker для немедленной проверки
+                        registration.active.postMessage({ type: 'manualCheck' });
+                        this.showStatus('Проверяем обновления...', 'success');
+                    } else {
+                        throw new Error('Service Worker не поддерживается');
+                    }
+                } catch (error) {
+                    this.showStatus('Ошибка при проверке: ' + error.message, 'error');
+                } finally {
+                    setTimeout(() => {
+                        checkBtn.disabled = false;
+                        checkBtn.textContent = 'Проверить обновления';
+                    }, 2000);
+                }
             }
 
             getFilteredTasks() {
