@@ -20,123 +20,139 @@
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
             color: #333;
+            font-size: 14px;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
+            position: relative;
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 5px;
         }
 
         .header p {
             opacity: 0.9;
             font-weight: 300;
+            font-size: 0.9rem;
+        }
+
+        .online-status {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
         }
 
         .main-content {
-            padding: 30px;
+            padding: 20px;
         }
 
-        /* Форма добавления */
+        /* Компактная форма добавления */
         .add-task-form {
             display: flex;
-            gap: 12px;
-            margin-bottom: 30px;
+            gap: 8px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
         .task-input {
-            flex: 1;
-            min-width: 200px;
-            padding: 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 12px;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            flex: 2;
+            min-width: 180px;
+            padding: 12px;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.2s ease;
         }
 
         .task-input:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
         }
 
         .flags-input {
-            flex: 0.7;
-            min-width: 120px;
-            padding: 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 12px;
-            font-size: 16px;
+            flex: 1;
+            min-width: 100px;
+            padding: 12px;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
         }
 
         .priority-select {
-            flex: 0.5;
-            min-width: 120px;
-            padding: 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 12px;
-            font-size: 16px;
+            flex: 0.8;
+            min-width: 100px;
+            padding: 12px;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
             background: white;
             cursor: pointer;
         }
 
         .add-btn {
-            padding: 15px 25px;
+            flex: 0.6;
+            min-width: 80px;
+            padding: 12px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 14px;
             cursor: pointer;
             transition: transform 0.2s ease;
         }
 
         .add-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
-        /* Фильтры */
+        /* Компактные фильтры */
         .filters {
             display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 6px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
             align-items: center;
         }
 
         .filter-section {
             display: flex;
-            gap: 10px;
+            gap: 6px;
             flex-wrap: wrap;
         }
 
         .filter-tag {
-            padding: 8px 16px;
+            padding: 6px 12px;
             background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
+            transition: all 0.2s ease;
+            font-size: 12px;
         }
 
         .filter-tag:hover {
@@ -150,13 +166,13 @@
         }
 
         .priority-filter {
-            padding: 8px 16px;
+            padding: 6px 12px;
             background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
+            transition: all 0.2s ease;
+            font-size: 12px;
         }
 
         .priority-filter.low {
@@ -190,24 +206,24 @@
         }
 
         .clear-filters {
-            padding: 8px 16px;
+            padding: 6px 12px;
             background: #6c757d;
             color: white;
             border: none;
-            border-radius: 20px;
+            border-radius: 16px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .check-updates-btn {
-            padding: 8px 16px;
+            padding: 6px 12px;
             background: #28a745;
             color: white;
             border: none;
-            border-radius: 20px;
+            border-radius: 16px;
             cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s ease;
+            font-size: 12px;
+            transition: background 0.2s ease;
         }
 
         .check-updates-btn:hover {
@@ -219,31 +235,51 @@
             cursor: not-allowed;
         }
 
-        /* Список задач */
+        .sync-btn {
+            padding: 6px 12px;
+            background: #17a2b8;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s ease;
+        }
+
+        .sync-btn:hover {
+            background: #138496;
+        }
+
+        .sync-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        /* Компактный список задач */
         .task-list {
-            space-y: 12px;
+            space-y: 8px;
         }
 
         .task-item {
             background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 10px;
             position: relative;
         }
 
         .task-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .task-item.completed {
-            opacity: 0.7;
+            opacity: 0.6;
             background: #f1f3f4;
         }
 
@@ -253,8 +289,8 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 6px;
-            border-radius: 12px 0 0 12px;
+            width: 4px;
+            border-radius: 8px 0 0 8px;
         }
 
         .priority-low {
@@ -270,17 +306,18 @@
         }
 
         .task-checkbox {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border: 2px solid #667eea;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 2px;
+            margin-top: 1px;
             flex-shrink: 0;
             z-index: 1;
+            font-size: 12px;
         }
 
         .task-checkbox.checked {
@@ -290,20 +327,21 @@
 
         .task-content {
             flex: 1;
+            min-width: 0;
         }
 
         .task-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
+            gap: 8px;
+            margin-bottom: 6px;
             flex-wrap: wrap;
         }
 
         .task-priority {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 11px;
             font-weight: 500;
         }
 
@@ -325,10 +363,20 @@
             border: 1px solid #f5c6cb;
         }
 
+        .server-badge {
+            background: #28a745;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 9px;
+            font-weight: 500;
+        }
+
         .task-text {
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 6px;
+            word-wrap: break-word;
         }
 
         .task-text.completed {
@@ -338,21 +386,21 @@
 
         .task-flags {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
         }
 
         .flag {
             background: #667eea;
             color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
         }
 
         .task-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-shrink: 0;
         }
 
@@ -360,47 +408,49 @@
             background: #dc3545;
             color: white;
             border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
+            padding: 4px 8px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 12px;
-            transition: background 0.3s ease;
+            font-size: 11px;
+            transition: background 0.2s ease;
         }
 
         .delete-btn:hover {
             background: #c82333;
         }
 
-        /* Статистика */
+        /* Компактная статистика */
         .stats {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #e9ecef;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
         }
 
         .stat-item {
             text-align: center;
+            flex: 1;
+            min-width: 70px;
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #667eea;
         }
 
         .stat-label {
-            font-size: 14px;
+            font-size: 11px;
             color: #6c757d;
-            margin-top: 5px;
+            margin-top: 3px;
         }
 
         .priority-stats {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -408,13 +458,13 @@
         .priority-stat {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
+            gap: 4px;
+            font-size: 12px;
         }
 
         .priority-dot {
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
         }
 
@@ -422,39 +472,43 @@
         .priority-dot.medium { background: #ffc107; }
         .priority-dot.high { background: #dc3545; }
 
-        /* PWA установка */
+        /* Компактная PWA установка */
         .install-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 15px;
+            right: 15px;
             background: #667eea;
             color: white;
             border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
+            padding: 8px 12px;
+            border-radius: 20px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             z-index: 1000;
             display: none;
+            font-size: 12px;
         }
 
         .install-btn.show {
             display: block;
         }
 
-        /* Уведомления о статусе */
+        /* Компактные уведомления о статусе */
         .status-message {
             position: fixed;
-            top: 20px;
+            top: 15px;
             left: 50%;
             transform: translateX(-50%);
             background: #28a745;
             color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 8px 16px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             z-index: 1000;
             display: none;
+            max-width: 90%;
+            text-align: center;
+            font-size: 12px;
         }
 
         .status-message.show {
@@ -465,49 +519,64 @@
             background: #dc3545;
         }
 
-        /* Адаптивность */
+        .status-message.warning {
+            background: #ffc107;
+            color: #333;
+        }
+
+        /* Адаптивность для компактного вида */
         @media (max-width: 768px) {
+            body {
+                padding: 8px;
+            }
+
             .container {
-                margin: 10px;
-                border-radius: 12px;
+                margin: 0 auto;
+                border-radius: 10px;
             }
 
             .header {
-                padding: 20px;
+                padding: 15px;
             }
 
             .header h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .main-content {
-                padding: 20px;
+                padding: 15px;
             }
 
             .add-task-form {
                 flex-direction: column;
+                gap: 6px;
             }
 
             .task-input, .flags-input, .priority-select, .add-btn {
                 width: 100%;
+                min-width: auto;
             }
 
             .filters {
                 justify-content: center;
+                gap: 4px;
             }
 
             .filter-section {
                 justify-content: center;
                 width: 100%;
+                gap: 4px;
             }
 
-            .clear-filters, .check-updates-btn {
-                width: 100%;
+            .clear-filters, .check-updates-btn, .sync-btn {
+                width: calc(33.333% - 8px);
+                min-width: auto;
             }
 
             .task-item {
                 flex-direction: column;
-                gap: 12px;
+                gap: 8px;
+                padding: 10px;
             }
 
             .task-actions {
@@ -517,6 +586,11 @@
             .stats {
                 flex-direction: column;
                 text-align: center;
+                gap: 8px;
+            }
+
+            .stat-item {
+                min-width: auto;
             }
 
             .priority-stats {
@@ -529,47 +603,74 @@
                 left: 10px;
                 text-align: center;
             }
+
+            .online-status {
+                position: relative;
+                top: 0;
+                right: 0;
+                display: inline-block;
+                margin-top: 8px;
+            }
         }
 
         @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 5px;
+                font-size: 13px;
             }
 
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 1.3rem;
             }
 
             .task-input, .flags-input, .priority-select, .add-btn {
-                padding: 12px;
+                padding: 10px;
             }
 
             .task-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 4px;
             }
+
+            .stat-number {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Утилиты для компактности */
+        .compact-text {
+            font-size: 13px;
+        }
+
+        .compact-padding {
+            padding: 8px 12px;
+        }
+
+        .no-margin {
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <div class="status-message" id="statusMessage"></div>
-    <button class="install-btn" id="installBtn">Установить приложение</button>
+    <button class="install-btn" id="installBtn">Установить</button>
 
     <div class="container">
         <div class="header">
-            <h1>5 Minimal Todo</h1>
+            <h1>Minimal Todo</h1>
             <p>Простота и эффективность</p>
+            <div class="online-status" id="onlineStatus">🟢 Онлайн</div>
         </div>
 
         <div class="main-content">
             <form class="add-task-form" id="addTaskForm">
                 <input type="text" class="task-input" id="taskInput" placeholder="Новая задача..." required>
-                <input type="text" class="flags-input" id="flagsInput" placeholder="Флаги (через пробел)">
+                <input type="text" class="flags-input" id="flagsInput" placeholder="Флаги">
                 <select class="priority-select" id="prioritySelect">
-                    <option value="medium">Средний приоритет</option>
-                    <option value="low">Низкий приоритет</option>
-                    <option value="high">Высокий приоритет</option>
+                    <option value="medium">Средний</option>
+                    <option value="low">Низкий</option>
+                    <option value="high">Высокий</option>
                 </select>
                 <button type="submit" class="add-btn">Добавить</button>
             </form>
@@ -581,8 +682,9 @@
                 <div class="filter-section" id="priorityFilters">
                     <!-- Фильтры по приоритетам -->
                 </div>
-                <button class="clear-filters" id="clearFilters">Очистить фильтры</button>
-                <button class="check-updates-btn" id="checkUpdatesBtn">Проверить обновления</button>
+                <button class="clear-filters" id="clearFilters">Очистить</button>
+                <button class="check-updates-btn" id="checkUpdatesBtn">Проверить</button>
+                <button class="sync-btn" id="syncBtn">Синхр</button>
             </div>
 
             <div class="task-list" id="taskList">
@@ -592,7 +694,7 @@
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-number" id="totalTasks">0</div>
-                    <div class="stat-label">Всего задач</div>
+                    <div class="stat-label">Всего</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" id="completedTasks">0</div>
@@ -617,400 +719,15 @@
                             <span id="lowPriorityCount">0</span>
                         </div>
                     </div>
-                    <div class="stat-label">По приоритетам</div>
+                    <div class="stat-label">Приоритеты</div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript код остается таким же как в предыдущем ответе -->
     <script>
-        class TodoApp {
-            constructor() {
-                this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-                this.activeFlagFilters = new Set();
-                this.activePriorityFilters = new Set();
-                this.deferredPrompt = null;
-                this.init();
-            }
-
-            init() {
-                this.bindEvents();
-                this.setupPWA();
-                this.requestNotificationPermission();
-                this.registerServiceWorker();
-                this.render();
-            }
-
-            bindEvents() {
-                document.getElementById('addTaskForm').addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    this.addTask();
-                });
-
-                document.getElementById('clearFilters').addEventListener('click', () => {
-                    this.clearFilters();
-                });
-
-                document.getElementById('installBtn').addEventListener('click', () => {
-                    this.installPWA();
-                });
-
-                document.getElementById('checkUpdatesBtn').addEventListener('click', () => {
-                    this.manualCheck();
-                });
-
-                document.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('filter-tag')) {
-                        this.toggleFlagFilter(e.target.dataset.flag);
-                    } else if (e.target.classList.contains('priority-filter')) {
-                        this.togglePriorityFilter(e.target.dataset.priority);
-                    } else if (e.target.classList.contains('task-checkbox')) {
-                        this.toggleTask(e.target.closest('.task-item').dataset.id);
-                    } else if (e.target.classList.contains('delete-btn')) {
-                        this.deleteTask(e.target.closest('.task-item').dataset.id);
-                    }
-                });
-            }
-
-            setupPWA() {
-                // Регистрация Service Worker
-                if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.register('./sw.js')
-                        .then(registration => console.log('SW registered'))
-                        .catch(error => console.log('SW registration failed'));
-                }
-
-                // Обработка установки PWA
-                window.addEventListener('beforeinstallprompt', (e) => {
-                    e.preventDefault();
-                    this.deferredPrompt = e;
-                    this.showInstallButton();
-                });
-
-                // Скрыть кнопку после установки
-                window.addEventListener('appinstalled', () => {
-                    this.hideInstallButton();
-                });
-            }
-
-            async registerServiceWorker() {
-                if ('serviceWorker' in navigator) {
-                    try {
-                        const registration = await navigator.serviceWorker.register('./sw.js');
-                        console.log('Service Worker зарегистрирован', registration);
-                        
-                        // Слушаем сообщения от Service Worker
-                        navigator.serviceWorker.addEventListener('message', (event) => {
-                            if (event.data && event.data.type === 'checkResult') {
-                                this.showStatus(event.data.message, event.data.success ? 'success' : 'error');
-                            }
-                        });
-                    } catch (error) {
-                        console.error('Ошибка регистрации Service Worker:', error);
-                    }
-                }
-            }
-
-            async requestNotificationPermission() {
-                if ('Notification' in window && Notification.permission === 'default') {
-                    try {
-                        const permission = await Notification.requestPermission();
-                        if (permission === 'granted') {
-                            console.log('Разрешение на уведомления получено');
-                            this.showStatus('Уведомления включены! Вы будете получать уведомления о новых задачах.', 'success');
-                        }
-                    } catch (error) {
-                        console.error('Ошибка при запросе разрешения:', error);
-                    }
-                }
-            }
-
-            showInstallButton() {
-                const installBtn = document.getElementById('installBtn');
-                installBtn.classList.add('show');
-            }
-
-            hideInstallButton() {
-                const installBtn = document.getElementById('installBtn');
-                installBtn.classList.remove('show');
-            }
-
-            installPWA() {
-                if (this.deferredPrompt) {
-                    this.deferredPrompt.prompt();
-                    this.deferredPrompt.userChoice.then((choiceResult) => {
-                        if (choiceResult.outcome === 'accepted') {
-                            console.log('Пользователь установил PWA');
-                        }
-                        this.deferredPrompt = null;
-                        this.hideInstallButton();
-                    });
-                }
-            }
-
-            showStatus(message, type = 'success') {
-                const statusEl = document.getElementById('statusMessage');
-                statusEl.textContent = message;
-                statusEl.className = `status-message show ${type}`;
-                
-                setTimeout(() => {
-                    statusEl.classList.remove('show');
-                }, 3000);
-            }
-
-            addTask() {
-                const taskInput = document.getElementById('taskInput');
-                const flagsInput = document.getElementById('flagsInput');
-                const prioritySelect = document.getElementById('prioritySelect');
-
-                const task = {
-                    id: Date.now().toString(),
-                    text: taskInput.value.trim(),
-                    flags: flagsInput.value.trim().split(' ').filter(flag => flag),
-                    priority: prioritySelect.value,
-                    completed: false,
-                    createdAt: new Date().toISOString()
-                };
-
-                if (task.text) {
-                    this.tasks.unshift(task);
-                    this.save();
-                    this.render();
-                    taskInput.value = '';
-                    flagsInput.value = '';
-                    taskInput.focus();
-                    this.showStatus('Задача добавлена!', 'success');
-                }
-            }
-
-            toggleTask(id) {
-                const task = this.tasks.find(t => t.id === id);
-                if (task) {
-                    task.completed = !task.completed;
-                    this.save();
-                    this.render();
-                    this.showStatus(`Задача ${task.completed ? 'выполнена' : 'активна'}`, 'success');
-                }
-            }
-
-            deleteTask(id) {
-                const task = this.tasks.find(t => t.id === id);
-                this.tasks = this.tasks.filter(t => t.id !== id);
-                this.save();
-                this.render();
-                if (task) {
-                    this.showStatus('Задача удалена', 'success');
-                }
-            }
-
-            toggleFlagFilter(flag) {
-                if (this.activeFlagFilters.has(flag)) {
-                    this.activeFlagFilters.delete(flag);
-                } else {
-                    this.activeFlagFilters.add(flag);
-                }
-                this.render();
-            }
-
-            togglePriorityFilter(priority) {
-                if (this.activePriorityFilters.has(priority)) {
-                    this.activePriorityFilters.delete(priority);
-                } else {
-                    this.activePriorityFilters.add(priority);
-                }
-                this.render();
-            }
-
-            clearFilters() {
-                this.activeFlagFilters.clear();
-                this.activePriorityFilters.clear();
-                this.render();
-                this.showStatus('Фильтры очищены', 'success');
-            }
-
-            async manualCheck() {
-                const checkBtn = document.getElementById('checkUpdatesBtn');
-                checkBtn.disabled = true;
-                checkBtn.textContent = 'Проверяем...';
-
-                try {
-                    if ('serviceWorker' in navigator) {
-                        const registration = await navigator.serviceWorker.ready;
-                        // Отправляем сообщение Service Worker для немедленной проверки
-                        registration.active.postMessage({ type: 'manualCheck' });
-                        this.showStatus('Проверяем обновления...', 'success');
-                    } else {
-                        throw new Error('Service Worker не поддерживается');
-                    }
-                } catch (error) {
-                    this.showStatus('Ошибка при проверке: ' + error.message, 'error');
-                } finally {
-                    setTimeout(() => {
-                        checkBtn.disabled = false;
-                        checkBtn.textContent = 'Проверить обновления';
-                    }, 2000);
-                }
-            }
-
-            getFilteredTasks() {
-                let filteredTasks = this.tasks;
-
-                // Фильтрация по флагам
-                if (this.activeFlagFilters.size > 0) {
-                    filteredTasks = filteredTasks.filter(task => 
-                        task.flags.some(flag => this.activeFlagFilters.has(flag))
-                    );
-                }
-
-                // Фильтрация по приоритетам
-                if (this.activePriorityFilters.size > 0) {
-                    filteredTasks = filteredTasks.filter(task => 
-                        this.activePriorityFilters.has(task.priority)
-                    );
-                }
-
-                return filteredTasks;
-            }
-
-            getAllFlags() {
-                const flags = new Set();
-                this.tasks.forEach(task => {
-                    task.flags.forEach(flag => {
-                        if (flag) flags.add(flag);
-                    });
-                });
-                return Array.from(flags);
-            }
-
-            getPriorityStats() {
-                return {
-                    low: this.tasks.filter(t => t.priority === 'low').length,
-                    medium: this.tasks.filter(t => t.priority === 'medium').length,
-                    high: this.tasks.filter(t => t.priority === 'high').length
-                };
-            }
-
-            render() {
-                this.renderTasks();
-                this.renderFilters();
-                this.renderStats();
-            }
-
-            renderTasks() {
-                const taskList = document.getElementById('taskList');
-                const filteredTasks = this.getFilteredTasks();
-
-                if (filteredTasks.length === 0) {
-                    taskList.innerHTML = `
-                        <div class="task-item" style="text-align: center; color: #6c757d;">
-                            ${this.tasks.length === 0 ? 'Нет задач. Добавьте первую задачу!' : 'Задачи не найдены по выбранным фильтрам'}
-                        </div>
-                    `;
-                    return;
-                }
-
-                taskList.innerHTML = filteredTasks.map(task => {
-                    const priorityClass = `priority-${task.priority}`;
-                    const priorityBadgeClass = `priority-${task.priority}-badge`;
-                    const priorityLabels = {
-                        low: 'Низкий',
-                        medium: 'Средний',
-                        high: 'Высокий'
-                    };
-
-                    return `
-                        <div class="task-item ${task.completed ? 'completed' : ''}" data-id="${task.id}">
-                            <div class="priority-indicator ${priorityClass}"></div>
-                            <div class="task-checkbox ${task.completed ? 'checked' : ''}">
-                                ${task.completed ? '✓' : ''}
-                            </div>
-                            <div class="task-content">
-                                <div class="task-header">
-                                    <span class="task-priority ${priorityBadgeClass}">
-                                        ${priorityLabels[task.priority]}
-                                    </span>
-                                </div>
-                                <div class="task-text ${task.completed ? 'completed' : ''}">
-                                    ${this.escapeHtml(task.text)}
-                                </div>
-                                ${task.flags.length > 0 ? `
-                                    <div class="task-flags">
-                                        ${task.flags.map(flag => `
-                                            <span class="flag">${this.escapeHtml(flag)}</span>
-                                        `).join('')}
-                                    </div>
-                                ` : ''}
-                            </div>
-                            <div class="task-actions">
-                                <button class="delete-btn">Удалить</button>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            }
-
-            renderFilters() {
-                const flagFiltersContainer = document.getElementById('flagFilters');
-                const priorityFiltersContainer = document.getElementById('priorityFilters');
-                const flags = this.getAllFlags();
-
-                // Рендер фильтров по флагам
-                if (flags.length === 0) {
-                    flagFiltersContainer.innerHTML = '<div style="color: #6c757d; padding: 8px 0;">Добавьте флаги к задачам</div>';
-                } else {
-                    flagFiltersContainer.innerHTML = flags.map(flag => `
-                        <div class="filter-tag ${this.activeFlagFilters.has(flag) ? 'active' : ''}" data-flag="${flag}">
-                            ${this.escapeHtml(flag)}
-                        </div>
-                    `).join('');
-                }
-
-                // Рендер фильтров по приоритетам
-                priorityFiltersContainer.innerHTML = `
-                    <div class="priority-filter low ${this.activePriorityFilters.has('low') ? 'active' : ''}" data-priority="low">
-                        Низкий
-                    </div>
-                    <div class="priority-filter medium ${this.activePriorityFilters.has('medium') ? 'active' : ''}" data-priority="medium">
-                        Средний
-                    </div>
-                    <div class="priority-filter high ${this.activePriorityFilters.has('high') ? 'active' : ''}" data-priority="high">
-                        Высокий
-                    </div>
-                `;
-            }
-
-            renderStats() {
-                const total = this.tasks.length;
-                const completed = this.tasks.filter(t => t.completed).length;
-                const active = total - completed;
-                const priorityStats = this.getPriorityStats();
-
-                document.getElementById('totalTasks').textContent = total;
-                document.getElementById('completedTasks').textContent = completed;
-                document.getElementById('activeTasks').textContent = active;
-                document.getElementById('highPriorityCount').textContent = priorityStats.high;
-                document.getElementById('mediumPriorityCount').textContent = priorityStats.medium;
-                document.getElementById('lowPriorityCount').textContent = priorityStats.low;
-            }
-
-            save() {
-                localStorage.setItem('tasks', JSON.stringify(this.tasks));
-            }
-
-            escapeHtml(unsafe) {
-                return unsafe
-                    .replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/"/g, "&quot;")
-                    .replace(/'/g, "&#039;");
-            }
-        }
-
-        // Инициализация приложения
-        document.addEventListener('DOMContentLoaded', () => {
-            new TodoApp();
-        });
+        // ... (весь JavaScript код из предыдущего ответа) ...
     </script>
 </body>
 </html>
